@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DroneController;
+use App\Http\Controllers\DronePlanController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('/users', UserController::class);
 Route::resource('/drones', DroneController::class);
 Route::resource('/plans', PlanController::class);
+Route::resource('/dronePlans', DronePlanController::class);

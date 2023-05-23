@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 
-class StoreDroneRequest extends FormRequest
+class StoreDronePlanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,7 +20,7 @@ class StoreDroneRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json(['success' => false, 'message' => $validator->errors()], 412));
     }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -30,12 +29,8 @@ class StoreDroneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type_of_drones' => 'required',
-            'model' => 'required',
-            'serial_number' => 'required',
-            'instructions' => 'required',
-            'price' => 'required',
-            'user_id' => 'required',
+            'drone_id' => 'required',
+            'plan_id' => 'required',
         ];
     }
 }
