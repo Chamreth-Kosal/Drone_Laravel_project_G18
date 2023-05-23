@@ -16,17 +16,17 @@ class Drone extends Model
         'serial_number',
         'instructions',
         'price',
-        'plan_id'
+        'user_id'
     ];
     public static function store($request, $id = null)
     {
-        $drone = $request->only(['type_of_drones', 'instructions', 'model', 'serial_number', 'price', 'plan_id']);
+        $drone = $request->only(['type_of_drones', 'instructions', 'model', 'serial_number', 'price', 'user_id']);
         $drone = self::updateOrCreate(['id' => $id], $drone);
 
         return $drone;
     }
 
-    public function plan():BelongsTo
+    public function user():BelongsTo
     {
         return $this->belongsTo(Plan::class);
     }
