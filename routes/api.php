@@ -1,11 +1,8 @@
 <?php
 
 use App\Http\Controllers\DroneController;
-<<<<<<< HEAD
 use App\Http\Controllers\DronePlanController;
-=======
 use App\Http\Controllers\MapController;
->>>>>>> cf23ee1fb2cf479d72c2aff6aad5d693eb07265f
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
