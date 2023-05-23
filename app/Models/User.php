@@ -52,10 +52,6 @@ class User extends Authenticatable
 
     }
 
-    // public function drones(){
-    //     return $this->belongsToMany(Drone::class, 'drone_users')->withTimestamps();
-    // }
-
     public function drones(): HasMany
     {
         return $this->hasMany(Drone::class);

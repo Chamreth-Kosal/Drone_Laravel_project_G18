@@ -36,5 +36,9 @@ class Drone extends Model
     {
         return $this->belongsToMany(Plan::class, 'drone_plans');
     }
+    public function maps():HasMany
+    {
+        return $this->hasMany(Map::class);
+    }
 
 }
