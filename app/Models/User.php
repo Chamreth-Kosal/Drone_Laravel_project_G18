@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function store($request, $id = null){
+
+        $users = $request->only(['name', 'email','password']);
+        $users = self::updateOrCreate(['id'=>$id],$users);
+        return $users;
+
+    }
+
+    // public function drones(){
+    //     return $this->belongsToMany(Drone::class, 'drone_users')->withTimestamps();
+    // }
 }
