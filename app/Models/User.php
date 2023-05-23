@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Drone::class);
     }
+
+    public function plans(): HasMany
+    {
+        return $this->hasMany(Plan::class);
+    }
 }
