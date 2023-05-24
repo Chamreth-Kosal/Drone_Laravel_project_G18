@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DroneController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\DronePlanController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
@@ -28,3 +29,4 @@ Route::resource('/drones', DroneController::class);
 Route::resource('/maps', MapController::class);
 Route::resource('/plans', PlanController::class);
 Route::resource('/locations', LocationController::class);
+Route::resource('/dronePlans', DronePlanController::class);
