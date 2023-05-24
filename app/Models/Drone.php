@@ -16,7 +16,8 @@ class Drone extends Model
         'serial_number',
         'instructions',
         'price',
-        'user_id'
+        'user_id',
+     
     ];
     public static function store($request, $id = null)
     {
@@ -36,4 +37,8 @@ class Drone extends Model
         return $this->hasMany(Map::class);
     }
 
+    public function locations():HasMany
+    {
+        return $this->hasMany(Location::class);
+    }
 }
