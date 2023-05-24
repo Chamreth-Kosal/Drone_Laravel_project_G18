@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePlanRequest;
+use App\Http\Resources\PlaneResource;
+use App\Http\Resources\ShowPlaneResource;
+use App\Http\Resources\ShowPlanrResource;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 
@@ -17,7 +20,8 @@ class PlanController extends Controller
         $plans = Plan::all();
         $plan = request('name');
         $plans = Plan::where('name', 'like', '%'. $plan. '%')->get();
-
+        
+        $plans = PlaneResource::collection($plans);
         return response()->json(['success' => true, 'data' => $plans], 200);
     }
 
@@ -37,6 +41,7 @@ class PlanController extends Controller
     public function show(string $id)
     {
         $plan = Plan::find($id);
+        $plan = new ShowPlaneResource($plan);
         return response()->json(['success' => true, 'data' => $plan], 200);
     }
 

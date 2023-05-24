@@ -29,13 +29,14 @@ class Drone extends Model
 
     public function user():BelongsTo
     {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(User::class);
     }
 
     public function plans()
     {
         return $this->belongsToMany(Plan::class, 'drone_plans');
     }
+
     public function maps():HasMany
     {
         return $this->hasMany(Map::class);

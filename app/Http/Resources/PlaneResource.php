@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Controllers\PlanController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ShowUserResource extends JsonResource
+class PlaneResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +15,13 @@ class ShowUserResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'=>$this->id,
-            'name'=>$this->name,
-            'email'=>$this->email,
-            'password'=>$this->password,
-            'manage_drone'=>DroneResource::collection($this->drones),
-          
+            'id' => $this->id,
+            'name' => $this->name,
+            'area'  => $this->area,
+            'datetime'  => $this->datetime,
+            'duration'  => $this->duration,
+            'status' => $this->status,
+            'create_by' => $this->create_by_id
         ];
     }
 }
