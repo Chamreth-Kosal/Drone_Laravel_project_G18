@@ -46,6 +46,7 @@ Route::get('/maps/{address}/{farmId}', [MapController::class, 'downloadImage']);
 // ==============================Plan===============================
 Route::get('/plans', [PlanController::class,'index']);
 Route::get('/plans/{id}',[PlanController::class,'show']);
+Route::get('/getPlanName', [PlanController::class,'getPlanName']);
 
 // ==============================Drones==============================
 Route::get('/drones', [DroneController::class,'index']);

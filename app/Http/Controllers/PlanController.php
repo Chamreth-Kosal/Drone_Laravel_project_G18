@@ -17,11 +17,18 @@ class PlanController extends Controller
     {
         
         $plans = Plan::all();
-        $plan = request('name');
-        $plans = Plan::where('name', 'like', '%'. $plan. '%')->get();
+        // $plan = request('name');
+        // $plans = Plan::where('name', 'like', '%'. $plan. '%')->get();
         
         $plans = PlaneResource::collection($plans);
         return response()->json(['success' => true, 'data' => $plans], 200);
+    }
+
+    public function getPlanName(Request $request){
+        $plans = Plan::all();
+        $plan= $request->get('name');
+        $plans = Plan::where('name', 'like', '%' .$plan. '%')->get();
+        return response()->json(['success' =>true, 'data' =>$plans],201);
     }
 
     /**
