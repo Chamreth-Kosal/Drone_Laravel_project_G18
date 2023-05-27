@@ -18,7 +18,7 @@ class ShowMapResource extends JsonResource
             'id'=>$this->id,
             'images'=>$this->images,
             'address'=>$this->address,
-            'drone_id'=>$this->drone_id,
+            'drone_id'=>$this->drone,          
         ];
     }
 }

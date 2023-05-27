@@ -12,8 +12,11 @@ class Drone extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'drone_id',
         'type_of_drones',
         'model',
+        'battery',
+        'payload',
         'serial_number',
         'instructions',
         'price',
@@ -22,7 +25,7 @@ class Drone extends Model
     ];
     public static function store($request, $id = null)
     {
-        $drone = $request->only(['type_of_drones', 'instructions', 'model', 'serial_number', 'price', 'user_id']);
+        $drone = $request->only(['drone_id', 'type_of_drones', 'instructions', 'model', 'battery', 'payload', 'serial_number', 'price', 'user_id']);
         $drone = self::updateOrCreate(['id' => $id], $drone);
 
         return $drone;
