@@ -36,7 +36,11 @@ class UserController extends Controller
     {
         $users = User::find($id);
         $users = new ShowUserResource($users);
+        if(!$users){
+            return response()->json(['message' =>'Note Found'],404);
+        }
         return response()->json(['success' =>true, 'data' =>$users],200);
+ 
     }
 
     /**
