@@ -15,12 +15,9 @@ class PlanController extends Controller
      */
     public function index()
     {
-        
         $plans = Plan::all();
-        // $plan = request('name');
-        // $plans = Plan::where('name', 'like', '%'. $plan. '%')->get();
-        
         $plans = PlaneResource::collection($plans);
+
         return response()->json(['success' => true, 'data' => $plans], 200);
     }
 
@@ -28,6 +25,7 @@ class PlanController extends Controller
         $plans = Plan::all();
         $plan= $request->get('name');
         $plans = Plan::where('name', 'like', '%' .$plan. '%')->get();
+
         return response()->json(['success' =>true, 'data' =>$plans],201);
     }
 
@@ -38,7 +36,6 @@ class PlanController extends Controller
     {
         $plan = Plan::store($request);
         return response()->json(['success' => true, 'data' => $plan], 201);
-
     }
 
     /**
@@ -48,6 +45,7 @@ class PlanController extends Controller
     {
         $plan = Plan::find($id);
         $plan = new ShowPlaneResource($plan);
+
         return response()->json(['success' => true, 'data' => $plan], 200);
     }
 
@@ -66,9 +64,11 @@ class PlanController extends Controller
     public function destroy(string $id)
     {
         $plan = Plan::find($id);
+
         if (! $plan){
             return response()->json(['message' => 'Record not found'], 404);
         }
+        
         $plan->delete();
         return response()->json(['message' => 'Record deleted'], 200);
     }

@@ -17,6 +17,7 @@ class UserController extends Controller
     {
         $users = User::all();
         $users = UserResource::collection($users);
+
         return response()->json(['success' =>true, 'data' =>$users],200);
     }
 
@@ -35,10 +36,11 @@ class UserController extends Controller
     public function show(string $id)
     {
         $users = User::find($id);
-        
+
         if(!$users){
             return response()->json(['message' =>'Note Found'],404);
         }
+
         $users = new ShowUserResource($users);
         return response()->json(['success' =>true, 'data' =>$users],200);
  
@@ -50,11 +52,13 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $users = User::find($id);
+
         $users -> update([
             'name'=> $request -> input('name'),
             'email'=> $request -> input('email'),
             'password'=> $request -> input('password'),
         ]);
+
         return response()->json(['success' =>true, 'data' =>$users],200);
     }
 
@@ -64,9 +68,11 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $users = User::find($id);
+
         if (! $users){
             return response()->json(['message' => 'Record not found'], 404);
         }
+        
         $users->delete();
         return response()->json(['message' => 'Record deleted'], 200);
     }

@@ -20,6 +20,7 @@ class Farm extends Model
     public static function store($request, $id = null){
         $farm = $request->only(['name', 'user_id','map_id']);
         $farm = self::updateOrCreate(['id'=>$id],$farm);
+        
         return $farm;
     }
 

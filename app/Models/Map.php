@@ -20,6 +20,7 @@ class Map extends Model
 
         $maps = $request->only(['images', 'address','drone_id']);
         $maps = self::updateOrCreate(['id'=>$id],$maps);
+        
         return $maps;
     }
 

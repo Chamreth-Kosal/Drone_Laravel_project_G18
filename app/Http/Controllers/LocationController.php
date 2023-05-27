@@ -16,6 +16,7 @@ class LocationController extends Controller
     {
         $locations = Location::all();
         $locations = ShowLocationResource::collection($locations);
+
         return response()->json(['success' =>true, 'data' =>$locations],200);
     }
 
@@ -38,6 +39,7 @@ class LocationController extends Controller
         if(!$locations){
             return response()->json(['message' => 'Record not found']);
         };
+
         $locations=new ShowLocationResource($locations);
         return response()->json(['success' =>true, 'data' =>$locations],200);
     }
@@ -57,6 +59,7 @@ class LocationController extends Controller
     public function destroy(string $id)
     {
         $location = Location::find($id);
+        
         if (! $location){
             return response()->json(['message' => 'Record not found'], 404);
         }

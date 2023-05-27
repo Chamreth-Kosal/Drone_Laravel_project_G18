@@ -21,23 +21,23 @@ class AuthenticationController extends Controller
                 'token' => $token
             ]);
         }
-        return response()->json([
-            'message' => 'Invalid credentials'
-        ], 401);
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
+
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
         return response()->json(['message' => 'Logged out successfully']);
     }
+
     public function users(Request $request){
         $users = User::create([
             'name' => request('name'),
             'email' => request('email'),
             'password' => Hash::make($request->password)
         ]);
-        
         $token = $users->createToken('API Token')->plainTextToken;
+
         return response()->json(['success' =>true, 'data' => $users,'token'=>$token],201);
     }
 }

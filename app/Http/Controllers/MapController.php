@@ -20,6 +20,7 @@ class MapController extends Controller
     {
         $maps = Map::all();
         $maps = ShowMapResource::collection($maps);
+
         return response()->json(['success' =>true, 'data' =>$maps],200);
     }
 
@@ -39,6 +40,7 @@ class MapController extends Controller
     {
         $map = Map::all();
         $map = ShowMapResource::collection($map);
+
         return response()->json(['success' =>true, 'data' =>$map],200);
     }
 
@@ -48,7 +50,6 @@ class MapController extends Controller
     public function deleteImage(Request $image,$address,$farmId)
     {
         $farm = Farm::where('id',$farmId)->firstOrFail();
-        // $map = Map::where('address', $address)->firstOrFail();
 
         if (!$farm) {
             return response()->json(['message' => 'Farm id not found']);
@@ -62,8 +63,10 @@ class MapController extends Controller
         if ($map) {
             $map->images = null;
             $map->save();
+
             return response()->json(['status'=>true,'image'=>$map]);
         }
+
         return response()->json(['message' => 'Map id not found']);
 
     }

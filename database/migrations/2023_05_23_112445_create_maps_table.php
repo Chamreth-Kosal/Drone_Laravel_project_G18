@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('images')->nullable();
             $table->string('address');
-
             $table->unsignedBigInteger('drone_id');
             $table->foreign('drone_id')->references('id')->on('drones')->onDelete('cascade');
             $table->timestamps();

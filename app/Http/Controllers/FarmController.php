@@ -17,6 +17,7 @@ class FarmController extends Controller
     {
         $farms = Farm::all();
         $farms = FarmResource::collection($farms);
+
         return response()->json(['success' => true, 'data' => $farms], 200);
     }
 
@@ -36,6 +37,7 @@ class FarmController extends Controller
     {
         $farm = Farm::store($request, $id);
         $farm = new ShowFarmResource($farm);
+        
         return response()->json(['success' => true, 'data' => $farm], 201);
     }
 }

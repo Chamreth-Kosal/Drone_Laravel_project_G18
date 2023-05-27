@@ -21,6 +21,7 @@ class Location extends Model
 
         $locations = $request->only(["latitude","longitude","drone_id"]);
         $locations = self::updateOrCreate(['id'=>$id],$locations);
+        
         return $locations;
     }
 

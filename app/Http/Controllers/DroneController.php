@@ -19,8 +19,8 @@ class DroneController extends Controller
     public function index()
     {
         $drones = Drone::all();
-        
         $drones = DroneResource::collection($drones);
+
         return response()->json(['success' => true, 'data' => $drones], 200);
     }
 
@@ -30,7 +30,6 @@ class DroneController extends Controller
     public function store(StoreDroneRequest $request)
     {
         $drone = Drone::store($request);
-        
         return response()->json(['success' => true, 'data' => $drone], 201);
     }
 
@@ -55,13 +54,13 @@ class DroneController extends Controller
         $drone = Drone::where('drone_id', $id)->first();
 
         if (!$drone) {
-
             return response()->json(['message' => 'Drone not found'], 404);
         }
 
         $drone->battery = $request->input('battery');
         $drone->payload = $request->input('payload');
         $drone->save();
+
         return response()->json(['success' => true, 'data' => $drone], 201);
     }
 
@@ -75,6 +74,7 @@ class DroneController extends Controller
         if (! $drone){
             return response()->json(['message' => 'Record not found'], 404);
         }
+
         $drone->delete();
         return response()->json(['message' => 'Record deleted'], 200);
     }
@@ -82,9 +82,11 @@ class DroneController extends Controller
     public function locations($id){
 
         $drone = Drone::where('drone_id', $id )->first();
+
         if(! $drone){
             return response()->json(['message' => 'Drone id not found'], 404);
         }
+        
         $location = $drone->locations;
         return response()->json(['success' => true, 'data' => $location], 200);
     }
