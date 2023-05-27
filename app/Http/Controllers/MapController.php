@@ -37,7 +37,9 @@ class MapController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $map = Map::all();
+        $map = ShowMapResource::collection($map);
+        return response()->json(['success' =>true, 'data' =>$map],200);
     }
 
     /**
@@ -88,24 +90,23 @@ class MapController extends Controller
 
     // ====Add a newly taken mapping image for farm 7 in Kampong Cham====
      
-        public function createImage(Request $image,$address,$farmId){
-            $farm = Farm::where('id', $farmId)->first();
-            // dd($farm);
-            if (!$farm) {
-                return response()->json(['message' => 'Farm id not found']);
-            }
+    public function createImage(Request $image,$address,$farmId){
+        $farm = Farm::where('id', $farmId)->first();
+        if (!$farm) {
+            return response()->json(['message' => 'Farm id not found']);
+        }
     
-            $map = Map::where('address', $address)
-            ->whereHas('farms', function ($query) use ($farm) {
+        $map = Map::where('address', $address)
+        ->whereHas('farms', function ($query) use ($farm) {
                 $query->where('id', $farm->id);
-            })->first();
+        })->first();
     
-            if ($map) {
-                $map->images = request('images');
-                $map->save();
-                return response()->json(['status'=>true,'image'=>$map]);
-            }
-            return response()->json(['message' => 'Map id not found']);
+        if ($map) {
+        $map->images = request('images');
+        $map->save();
+        return response()->json(['status'=>true,'image'=>$map]);
+        }
+        return response()->json(['message' => 'Map id not found']);
     }
 }
 

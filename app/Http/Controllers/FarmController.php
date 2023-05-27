@@ -25,7 +25,6 @@ class FarmController extends Controller
      */
     public function store(StoreFarmRequest $request)
     {
-       
         $farm = Farm::store($request);
         return response()->json(['success' => true, 'data' => $farm], 201);
     }
@@ -38,21 +37,5 @@ class FarmController extends Controller
         $farm = Farm::store($request, $id);
         $farm = new ShowFarmResource($farm);
         return response()->json(['success' => true, 'data' => $farm], 201);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

@@ -53,13 +53,12 @@ class DroneController extends Controller
     // Update the system of current status (battery, payload, location etc)
     public function updateStatus(Request $request, $id){
         $drone = Drone::where('drone_id', $id)->first();
-        // dd($drone);
+
         if (!$drone) {
-            // Drone not found, return an error response
+
             return response()->json(['message' => 'Drone not found'], 404);
         }
 
-        // Update the drone's status properties
         $drone->battery = $request->input('battery');
         $drone->payload = $request->input('payload');
         $drone->save();
@@ -76,7 +75,6 @@ class DroneController extends Controller
         if (! $drone){
             return response()->json(['message' => 'Record not found'], 404);
         }
-
         $drone->delete();
         return response()->json(['message' => 'Record deleted'], 200);
     }

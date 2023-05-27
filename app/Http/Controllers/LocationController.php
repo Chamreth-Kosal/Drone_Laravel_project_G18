@@ -52,6 +52,12 @@ class LocationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $location = Location::find($id);
+        if (! $location){
+            return response()->json(['message' => 'Record not found'], 404);
+        }
+        
+        $location->delete();
+        return response()->json(['message' => 'Record deleted'], 200); 
     }
 }
