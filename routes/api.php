@@ -72,9 +72,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // ==========================Map=======================================
     Route::post('/maps',[MapController::class,'store']);
     Route::post('/maps/{address}/{farmId}', [MapController::class, 'createImage']);
-    // Route::put('/maps/{id}',[MapController::class,'update']);
     Route::delete('/maps/{address}/{farmId}', [MapController::class, 'deleteImage']);
-    // Route::delete('/maps/{id}',[MapController::class,'destroy']);
     
     // ============================Plan=====================================
     Route::post('/plans',[PlanController::class,'store']);
