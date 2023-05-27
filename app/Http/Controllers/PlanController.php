@@ -54,7 +54,7 @@ class PlanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StorePlanRequest $request, string $id)
     {
         $plan = Plan::store($request, $id);
         return response()->json(['success' => true, 'data' => $plan], 201);

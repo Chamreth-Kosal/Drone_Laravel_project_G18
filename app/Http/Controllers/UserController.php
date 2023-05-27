@@ -35,10 +35,11 @@ class UserController extends Controller
     public function show(string $id)
     {
         $users = User::find($id);
-        $users = new ShowUserResource($users);
+        
         if(!$users){
             return response()->json(['message' =>'Note Found'],404);
         }
+        $users = new ShowUserResource($users);
         return response()->json(['success' =>true, 'data' =>$users],200);
  
     }

@@ -86,7 +86,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // ============================Drone=====================================
     Route::post('/drones',[DroneController::class,'store']);
-    // Route::put('/drones/{id}',[DroneController::class,'update']);
     Route::put('/drones/{id}', [DroneController::class, 'updateStatus']);
     Route::delete('/drones/{id}',[DroneController::class,'destroy']);
 

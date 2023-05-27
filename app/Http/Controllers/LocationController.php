@@ -34,6 +34,10 @@ class LocationController extends Controller
     public function show(string $id)
     {
         $locations =Location::find($id);
+        
+        if(!$locations){
+            return response()->json(['message' => 'Record not found']);
+        };
         $locations=new ShowLocationResource($locations);
         return response()->json(['success' =>true, 'data' =>$locations],200);
     }

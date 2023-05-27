@@ -48,6 +48,7 @@ class User extends Authenticatable
 
         $users = $request->only(['name', 'email','password']);
         $users = self::updateOrCreate(['id'=>$id],$users);
+        
         return $users;
 
     }
