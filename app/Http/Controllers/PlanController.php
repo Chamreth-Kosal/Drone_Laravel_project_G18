@@ -59,11 +59,9 @@ class PlanController extends Controller
     public function destroy(string $id)
     {
         $plan = Plan::find($id);
-        
         if (! $plan){
             return response()->json(['message' => 'Record not found'], 404);
         }
-
         $plan->delete();
         return response()->json(['message' => 'Record deleted'], 200);
     }
